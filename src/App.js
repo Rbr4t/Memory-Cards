@@ -1,35 +1,37 @@
-import MemeCard from "./components/Meme";
+import Card from "./components/Card";
 import Counter from "./components/Counter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
 
   let [score, setScore] = useState(0)
   let [bestScore, setBestScore] = useState(0)
-  let [reset, setReset] = useState(false)
+  let [clickedCards, setClickedCards] = useState([])
 
-  const pullScore = (data) => {
+  const handleLogic = (data) => {
+
+    setClickedCards(prev => [...prev, data])
     
-    if(data.filter((e, i, a) => a.indexOf(e) !== i).length === 0) {
-      
-      setScore(data.length)
-      if(data.length > bestScore) {
-        setBestScore(data.length)
+    if(!clickedCards.includes(data)) {
+      setScore(score + 1)
+      if(score + 1 > bestScore ) {
+        setBestScore(score + 1)
       }
     } else {
-      // todo: use localStorage to save the result
-      setReset(true)
       setScore(0)
+      setClickedCards([])
     }
-  };
+  }
 
   return (
     <div>
       <h1>This is a memory game lol</h1>
-      {!reset ? <MemeCard func={pullScore} reset={reset}/> : setReset(false)}
+      <Card selectedCard={handleLogic} />
       <Counter score={score} bestScore={bestScore}/>
     </div>
   );
 }
+  
+
 
 export default App;
