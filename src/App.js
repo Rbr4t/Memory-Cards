@@ -1,13 +1,17 @@
-import Card from "./components/Card";
+import { useState } from "react";
+
+import Navbar from "./components/Navbar";
 import Counter from "./components/Counter";
-import { useEffect, useState } from "react";
+import Card from "./components/Card";
+
+import './styles/General.css'
 
 function App() {
 
   let [score, setScore] = useState(0)
   let [bestScore, setBestScore] = useState(0)
   let [clickedCards, setClickedCards] = useState([])
-
+  
   const handleLogic = (data) => {
 
     setClickedCards(prev => [...prev, data])
@@ -24,14 +28,14 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>This is a memory game lol</h1>
+    <div className="document">
+      <Navbar score={score} bestScore={bestScore}/>
+
       <Card selectedCard={handleLogic} />
       <Counter score={score} bestScore={bestScore}/>
+
     </div>
   );
 }
-  
-
 
 export default App;

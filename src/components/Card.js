@@ -1,19 +1,21 @@
 import arrayShuffle from "array-shuffle";
 import { useState } from "react";
 
+import '../styles/Cards.css'
+
 // fs doesn't work with the newest React, so gotta do it manually :)
-import sus1 from "../characters/1 - aPvQWSf.png"
-import sus2 from "../characters/2 - qhfNNjT.png"
-import sus3 from "../characters/3 - VSYbpuA.png"
-import sus4 from "../characters/4 - M4y5thc.png"
-import sus5 from "../characters/5 - K6yaVXc.png"
-import sus6 from "../characters/6 - XH3KEsd.png"
-import sus7 from "../characters/7 - o0Jc3H6.png"
-import sus8 from "../characters/8 - Wus3P0I.png"
-import sus9 from "../characters/9 - QspM5Bv.png"
-import sus10 from "../characters/10 - 5M7BgEN.png"
-import sus11 from "../characters/11 - 882ekxi.png"
-import sus12 from "../characters/12 - c60YSyH.png"
+import sus1 from "../assets/1 - aPvQWSf.png"
+import sus2 from "../assets/2 - qhfNNjT.png"
+import sus3 from "../assets/3 - VSYbpuA.png"
+import sus4 from "../assets/4 - M4y5thc.png"
+import sus5 from "../assets/5 - K6yaVXc.png"
+import sus6 from "../assets/6 - XH3KEsd.png"
+import sus7 from "../assets/7 - o0Jc3H6.png"
+import sus8 from "../assets/8 - Wus3P0I.png"
+import sus9 from "../assets/9 - QspM5Bv.png"
+import sus10 from "../assets/10 - 5M7BgEN.png"
+import sus11 from "../assets/11 - 882ekxi.png"
+import sus12 from "../assets/12 - c60YSyH.png"
 
 const images = [
     {"value": 1, "pic": sus1},
@@ -41,11 +43,11 @@ function Card(props) {
     }
 
     return (
-        <div>
+        <div className="container">
             {cards.map((obj, i) => {
                 return (
                 <button className="card" value={obj.value} key={i} onClick={(e) => handleCard(e)}>
-                    <img src={obj.pic} height="100"></img>
+                    <img src={obj.pic} height="200"></img>
                 </button>
                 )
                 
